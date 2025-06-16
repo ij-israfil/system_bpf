@@ -997,7 +997,8 @@ void initLogging() {
 void createBpfFsSubDirectories() {
     for (const auto& location : android::bpf::locations) {
         if (android::bpf::createSysFsBpfSubDir(location.prefix)) {
-            exit(120);
+            ALOGE("=== CRITICIL FAILURE creating BPF subdir %s", location.prefix);
+            //exit(120);
         }
     }
 }
